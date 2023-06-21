@@ -1,7 +1,7 @@
 {
-  "name": "tailadmin-react-free",
+  "name": "cuadernodecampo",
   "private": true,
-  "version": "1.0.5",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite --host",
