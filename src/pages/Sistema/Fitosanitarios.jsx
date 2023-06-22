@@ -65,7 +65,7 @@ const Fitosanitarios = () => {
   return (
     <DefaultLayout>
       <div className="mx-auto max-w-270">
-        <Breadcrumb pageName="Productos" />
+        <Breadcrumb pageName="Productos Fitosanitarios" />
         {/* Here are the maquinaria list */}
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-4">
