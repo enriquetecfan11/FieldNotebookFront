@@ -39,7 +39,7 @@ function App() {
         <Route path='/productos' element={<Productos />} />
         <Route path='/fitosanitarios' element={<Fitosanitarios />} />
         <Route path='/actividades' element={<Actvidades />} />
-        <Route path='/addactividades' element={<AñadirActividades />} />
+        <Route path='/anadiractividades' element={<AñadirActividades />} />
       </Routes>
     </>
   );

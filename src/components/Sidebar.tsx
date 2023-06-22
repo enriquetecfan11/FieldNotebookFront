@@ -103,15 +103,15 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 Actividades
               </NavLink>
             </li>
-            <li className='list-none'>
+            {/* <li className='list-none'>
               <NavLink
-                to="/addactividades"
+                to="/anadiractividades"
                 className={`mx-auto group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-boxdark dark:hover:bg-boxdark ${pathname.includes('profile') && 'bg-boxdark dark:bg-boxdark'
                   }`}
               >
                 Añadir Actividades
               </NavLink>
-            </li>
+            </li> */}
             <li className='list-none'>
               <NavLink
                 to="/calendar"
