@@ -2,6 +2,7 @@ import DefaultLayout from "../layout/DefaultLayout";
 import { useEffect, useState } from 'react';
 import ReactApexChart from "react-apexcharts";
 import { Link } from 'react-router-dom';
+import util from "../utils/util.js";
 
 const Actividades = () => {
   const [actividades, setActividades] = useState([]);
@@ -14,8 +15,9 @@ const Actividades = () => {
   const [filtroParcela, setFiltroParcela] = useState('');
   const [filtroEstado, setFiltroEstado] = useState('');
 
+
   useEffect(() => {
-    fetch('http://localhost:5000/actividades')
+    fetch(util.getActividadesUrl())
       .then(response => response.json())
       .then(data => {
         setActividades(data);
@@ -35,7 +37,7 @@ const Actividades = () => {
   }, []);
 
   const handleActualizarActividad = (actividad) => {
-    fetch(`http://localhost:5000/actividades/${actividad.id}`, {
+    fetch(util.getActividadUrl(), {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
