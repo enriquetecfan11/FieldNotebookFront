@@ -90,15 +90,52 @@ const Actividades = () => {
   const actividadesHechasGrafico = actividades.filter(actividad => actividad.hecho).length;
   const actividadesPendientesGrafico = actividades.filter(actividad => !actividad.hecho).length;
 
-  const options = {
-    labels: ['Actividades Hechas', 'Actividades Pendientes'],
-    colors: ['#34c38f', '#f46a6a'],
-    legend: {
-      show: false
+  const chartOptions = {
+    chart: {
+      type: 'bar',
+      height: 450,
+      stacked: false,
+      toolbar: {
+        show: true
+      },
+      zoom: {
+        enabled: true
+      }
+    },
+    responsive: [{
+      breakpoint: 480,
+      options: {
+        legend: {
+          position: 'bottom',
+          offsetX: -10,
+          offsetY: 0
+        }
+      }
+    }],
+    xaxis: {
+      categories: ["Actividades"]
+    },
+    yaxis: {
+      title: {
+        text: "Cantidad de Actividades"
+      }
     }
-  };
+  }
 
-  const series = [actividadesHechasGrafico, actividadesPendientesGrafico];
+  const series = [{
+    name: "Actividades Totales",
+    data: [totalActividades],
+    color: '#010101'
+  }, {
+    name: "Actividades Hechas",
+    data: [actividadesHechasGrafico],
+    color: '#10B981',
+
+  }, {
+    name: "Actividades Pendientes",
+    data: [actividadesPendientesGrafico],
+    color: '#DC3545',
+  }]
 
   return (
     <DefaultLayout>
@@ -115,6 +152,17 @@ const Actividades = () => {
           <h2 className="text-danger bg-danger-400 px-4 py-2 rounded-md">Actividades Pendientes: {actividadesPendientes}</h2>
         </div>
       </div>
+
+      {/* Bloque de Grafica */}
+      <div className="flex justify-center">
+        <div className="flex">
+          <div className="flex flex-col ga  p-4 items-center justify-center">
+            <h2 className="text-xl font-bold mb-2 text-center">Gráfico de Actividades</h2>
+            <ReactApexChart options={chartOptions} series={series} type="bar" width={480} />
+          </div>
+        </div>
+      </div>
+
 
       {/* Bloque de filtros */}
       <h2 className="text-xl font-bold mt-2 text-center">Filtrado de tabla</h2>
@@ -185,14 +233,8 @@ const Actividades = () => {
             </table>
           </div>
         </div>
-        <div className="flex justify-center">
-          <div className="flex">
-            <div className="flex flex-col ga  p-4 items-center justify-center">
-              <h2 className="text-xl font-bold mb-2 text-center">Gráfico de Actividades</h2>
-              <ReactApexChart options={options} series={series} type="pie" width={380} />
-            </div>
-          </div>
-        </div>      </div>
+
+      </div>
     </DefaultLayout>
   );
 };
