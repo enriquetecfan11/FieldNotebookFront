@@ -2,67 +2,36 @@ import { useEffect, useState } from 'react';
 import Breadcrumb from '../../components/Breadcrumb';
 import DefaultLayout from '../../layout/DefaultLayout';
 import { Link } from 'react-router-dom';
-
+import util from '../../utils/util';
 
 const Personal = () => {
   const [personas, setPersonas] = useState([]);
+  const [filtroCarnet, setFiltroCarnet] = useState('');
 
   useEffect(() => {
     // Realizar la solicitud GET al cargar la página
-    fetch('http://localhost:5000/personal')
+    fetch(util.getPersonal())
       .then(response => response.json())
       .then(data => {
         setPersonas(data);
+
+        const filtroCarnet = data.filter(persona => !persona.carnetfito).length;
+        setFiltroCarnet(filtroCarnet);
       })
       .catch(error => {
         console.error('Error al obtener los datos del personal:', error);
       });
   }, []);
 
-
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-
-    const form = event.target;
-    const formData = new FormData(form);
-
-    const personalData = {
-      nombre: formData.get('nombre'),
-      nif: formData.get('nif'),
-      ninscripcion: formData.get('inscripcion'),
-      carnetfito: formData.get('basico') === 'true',
-      cualificado: formData.get('cualificado') === 'true',
-      fumigacion: formData.get('fumigacion') === 'true',
-      piloto: formData.get('piloto') === 'true'
-    };
-
-    console.log(personalData);
-
-    //Realizar la solicitud a la API
-
-    fetch('http://localhost:5000/personal', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(personalData)
-    })
-      .then(response => response.json())
-      .then(data => {
-        console.log('Success:', data);
-        // alert('Se ha añadido el personal correctamente.');
-        // window.location.reload();
-        // form.reset();
-      })
-      .catch(error => {
-        console.error('Error al enviar los datos:', error);
-        // alert('Se produjo un error al enviar los datos. Por favor, inténtalo de nuevo.');
-      });
-
-    window.location.reload();
-    // form.reset();
-  };
-
+  const personasFiltradas = personas.filter(persona => {
+    if (filtroCarnet === '') {
+      return persona;
+    } else if (filtroCarnet === 'true') {
+      return persona.carnetfito;
+    } else {
+      return !persona.carnetfito;
+    }
+  })
   return (
     <DefaultLayout>
       <div className="mx-auto max-w-270 overflow-auto">
@@ -73,6 +42,18 @@ const Personal = () => {
             <Link to="/anadirpersonal" className="btn btn-primary font-bold mb-2 mr-5 text-center">Pincha aqui para añadir personal</Link>
           </div>
         </div>
+
+        <h2 className="text-xl font-bold mt-2 text-center">Filtrado de tabla</h2>
+        <div className="flex justify-center mt-2">
+          <select value={filtroCarnet} onChange={e => setFiltroCarnet(e.target.value)}
+            className="font-bold mb-2 mr-5 text-center"
+          >
+            <option value="">Filtar por carnet fitosanitario</option>
+            <option value="true">Si</option>
+            <option value="false">No</option>
+          </select>
+        </div>
+
 
         {/* Tabla Personal */}
         <div className="">
@@ -89,7 +70,7 @@ const Personal = () => {
               </tr>
             </thead>
             <tbody className=''>
-              {personas.map((persona, index) => (
+              {personasFiltradas.map((persona, index) => (
                 <tr className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white border-separate border border-slate-500' key={index}>
                   <td className='px-6 py-4 border-slate-500'>{persona.nombre}</td>
                   <td className='px-6 py-4 border-slate-500'>{persona.nif}</td>
@@ -104,7 +85,7 @@ const Personal = () => {
           </table>
         </div>
       </div>
-    </DefaultLayout>
+    </DefaultLayout >
   );
 };
 
