@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import Breadcrumb from '../../components/Breadcrumb';
 import DefaultLayout from '../../layout/DefaultLayout';
+import { Link } from 'react-router-dom';
+
 
 const Personal = () => {
   const [personas, setPersonas] = useState([]);
@@ -66,6 +68,12 @@ const Personal = () => {
       <div className="mx-auto max-w-270 overflow-auto">
         <Breadcrumb pageName="Personal" />
 
+        <div className="flex justify-center mb-5 mt-5">
+          <div className="w-full">
+            <Link to="/anadirpersonal" className="btn btn-primary font-bold mb-2 mr-5 text-center">Pincha aqui para añadir personal</Link>
+          </div>
+        </div>
+
         {/* Tabla Personal */}
         <div className="">
           <table id="tabla-personas" className="w-full text-sm text-left text-gray-500 dark:text-gray-400 lg:">
@@ -94,67 +102,6 @@ const Personal = () => {
               ))}
             </tbody>
           </table>
-        </div>
-
-        <div className='flex flex-col gap-4 my-5'>
-          <h2>Añade el personal de la explotación</h2>
-          <form onSubmit={handleFormSubmit}>
-            <div className='flex flex-col relative z-0 w-full mb-6 group'>
-              <input type="text" name="nombre" placeholder='Añade el nombre' required
-                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2"
-              />
-              <input type="text" name="nif" placeholder='Añade el NIF' required
-                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2"
-              />
-              <input type="text" name="inscripcion" placeholder='Añade el Número de Inscripción' required
-                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2" />
-
-              <h3 className='my-3'>Si la persona tiene el carnet fitosanitario rellena el siguiente formulario</h3>
-              <div className="flex flex-col my-3s">
-                <div className="flex flex-col gap-4">
-                  <div className="flex flex-row gap-5">
-                    <h4 className=''>Carnet Básico</h4>
-                    <div className="flex flex-row gap-4">
-                      <input type="radio" name="basico" id="basico-yes" value="true" />
-                      <label htmlFor="basico-yes">Sí</label>
-                      <input type="radio" name="basico" id="basico-no" value="false" />
-                      <label htmlFor="basico-no">No</label>
-                    </div>
-                  </div>
-                </div>
-                <div>
-                  <div className='my-3'>
-                    <h4>Seleccione el tipo de carnet</h4>
-                    <div className='flex flex-col gap-4'>
-                      <h4>Cualificado</h4>
-                      <div className="flex flex-row gap-4">
-                        <input type="radio" name="cualificado" id="cualificado-yes" value="true" />
-                        <label htmlFor="cualificado-yes">Sí</label>
-                        <input type="radio" name="cualificado" id="cualificado-no" value="false" />
-                        <label htmlFor="cualificado-no">No</label>
-                      </div>
-                      <h4>Fumigación</h4>
-                      <div className="flex flex-row gap-4">
-                        <input type="radio" name="fumigacion" id="fumigacion-yes" value="true" />
-                        <label htmlFor="fumigacion-yes">Sí</label>
-                        <input type="radio" name="fumigacion" id="fumigacion-no" value="false" />
-                        <label htmlFor="fumigacion-no">No</label>
-                      </div>
-                      <h4>Piloto</h4>
-                      <div className="flex flex-row gap-4">
-                        <input type="radio" name="piloto" id="piloto-yes" value="true" />
-                        <label htmlFor="piloto-yes">Sí</label>
-                        <input type="radio" name="piloto" id="piloto-no" value="false" />
-                        <label htmlFor="piloto-no">No</label>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-              <button type='submit' className="text-black bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"> Añadir personal</button>
-            </div>
-          </form>
         </div>
       </div>
     </DefaultLayout>
