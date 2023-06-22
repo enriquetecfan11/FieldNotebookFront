@@ -1,8 +1,12 @@
 import { useEffect, useState } from 'react';
 import Breadcrumb from '../../../components/Breadcrumb';
 import DefaultLayout from '../../../layout/DefaultLayout';
+import util from '../../../utils/util';
+import { useNavigate } from 'react-router-dom';
 
 const AñadirPersonal = () => {
+  const navigate = useNavigate();
+
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
@@ -23,7 +27,7 @@ const AñadirPersonal = () => {
 
     //Realizar la solicitud a la API
 
-    fetch('http://localhost:5000/personal', {
+    fetch(util.getPersonal(), {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -34,21 +38,23 @@ const AñadirPersonal = () => {
       .then(data => {
         console.log('Success:', data);
         // alert('Se ha añadido el personal correctamente.');
-        // window.location.reload();
-        // form.reset();
+        navigate('/personal');
+        form.reset();
       })
       .catch(error => {
         console.error('Error al enviar los datos:', error);
+        // Go to /personal
+        navigate('/personal');
         // alert('Se produjo un error al enviar los datos. Por favor, inténtalo de nuevo.');
       });
 
-    window.location.reload();
+    navigate('/personal');
     // form.reset();
   };
 
   return (
     <DefaultLayout>
-    <Breadcrumb pageName="Formulario para añadir personal" />
+      <Breadcrumb pageName="Formulario para añadir personal" />
       <div className='flex flex-col gap-4 my-5'>
         <h2>Añade el personal de la explotación</h2>
         <form onSubmit={handleFormSubmit}>
