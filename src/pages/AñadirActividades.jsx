@@ -1,5 +1,7 @@
 import DefaultLayout from "../layout/DefaultLayout";
 import { useEffect, useState } from 'react';
+import Breadcrumb from '../components/Breadcrumb2';
+
 
 
 const AddActividades = () => {
@@ -87,7 +89,7 @@ const AddActividades = () => {
   return (
     <DefaultLayout>
       <div className="mx-auto max-w-270 overflow-auto">
-        <h4>Formulario para añadir actividades</h4>
+        <Breadcrumb pageName="Formulario para añadir actividades" />
         <form onSubmit={handelFormSubmit}>
           <div className="flex flex-col gap-4">
             <input type="text" name="actividad" id="actividad" placeholder="Nombre de la actividad" required className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2" />
