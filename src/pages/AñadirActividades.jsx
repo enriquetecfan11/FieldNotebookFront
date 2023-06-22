@@ -1,6 +1,7 @@
 import DefaultLayout from "../layout/DefaultLayout";
 import { useEffect, useState } from 'react';
 import Breadcrumb from '../components/Breadcrumb2';
+import util from "../utils/util";
 
 
 
@@ -12,7 +13,7 @@ const AddActividades = () => {
 
   // Get Maquinaria
   useEffect(() => {
-    fetch('http://localhost:5000/maquinaria')
+    fetch(util.getMaquinaria())
       .then(response => response.json())
       .then(data => {
         setMaquinaria(data);
@@ -24,7 +25,7 @@ const AddActividades = () => {
 
   // Get Personal
   useEffect(() => {
-    fetch('http://localhost:5000/personal')
+    fetch(util.getPersonal())
       .then(response => response.json())
       .then(data => {
         setPersonal(data);
@@ -36,7 +37,7 @@ const AddActividades = () => {
 
   // Get Productos
   useEffect(() => {
-    fetch('http://localhost:5000/productos')
+    fetch(util.getProductos())
       .then(response => response.json())
       .then(data => {
         setProductos(data);
