@@ -122,20 +122,44 @@ const Actividades = () => {
     }
   }
 
-  const series = [{
-    name: "Actividades Totales",
-    data: [totalActividades],
-    color: '#010101'
-  }, {
-    name: "Actividades Hechas",
-    data: [actividadesHechasGrafico],
-    color: '#10B981',
+  let series = [];
 
-  }, {
-    name: "Actividades Pendientes",
-    data: [actividadesPendientesGrafico],
-    color: '#DC3545',
-  }]
+  if (filtroEstado === 'true') {
+    series = [
+      {
+        name: "Actividades Hechas",
+        data: [actividadesHechasGrafico],
+        color: '#10B981',
+      }
+    ];
+  } else if (filtroEstado === 'false') {
+    series = [
+      {
+        name: "Actividades Pendientes",
+        data: [actividadesPendientesGrafico],
+        color: '#DC3545',
+      }
+    ];
+  } else {
+    series = [
+      {
+        name: "Actividades Totales",
+        data: [actividadesHechasGrafico + actividadesPendientesGrafico],
+        color: '#010101'
+      },
+      {
+        name: "Actividades Hechas",
+        data: [actividadesHechasGrafico],
+        color: '#10B981',
+      },
+      {
+        name: "Actividades Pendientes",
+        data: [actividadesPendientesGrafico],
+        color: '#DC3545',
+      }
+    ];
+  }
+
 
   return (
     <DefaultLayout>
