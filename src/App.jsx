@@ -4,10 +4,13 @@ import { Route, Routes, useNavigate } from 'react-router-dom';
 import LoginPage from './pages/LoginPage';
 import Calendario from './pages/Calendario';
 import Actividades from './pages/Actividades';
+
+// Sistema
 import Personal from './pages/Sistema/Personal';
 import Maquinaria from './pages/Sistema/Maquinaria';
 import Productos from './pages/Sistema/Productos';
 import Fitosanitarios from './pages/Sistema/Fitosanitarios';
+import Parcelas from './pages/Sistema/Parcelas';
 
 // Formularios
 import AñadirActividades from './pages/AñadirActividades';
@@ -57,6 +60,7 @@ function App() {
             <Route path="/anadirmaquinaria" element={<AñadirMaquinaria />} />
             <Route path="/anadirproductos" element={<AñadirProductos />} />
             <Route path="/anadirfitosanitarios" element={<AñadirFitosanitarios />} />
+            <Route path="/parcelas" element={<Parcelas />} />
           </>
         ) : (
           <Route
