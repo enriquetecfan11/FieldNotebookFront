@@ -8,5 +8,8 @@ export default {
   getProductos: () => `${API_BASE_URL}/productos`,
   getFitosanitarios: () => `${API_BASE_URL}/fitosanitarios`,
   getFitosanitariosList: () => `${API_BASE_URL}/fitosanitarioslist`,
-  getUsuarios: () => `${API_BASE_URL}/usuarios`
+  getUsuarios: () => `${API_BASE_URL}/usuarios`,
+  getParcelas: () => `${API_BASE_URL}/parcelas`,
+  getParcelaID: () => `${API_BASE_URL}/parcelas/:id`,
+
 };
