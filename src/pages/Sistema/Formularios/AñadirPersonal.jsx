@@ -56,7 +56,6 @@ const AñadirPersonal = () => {
     <DefaultLayout>
       <Breadcrumb pageName="Formulario para añadir personal" />
       <div className='flex flex-col gap-4 my-5'>
-        <h2>Añade el personal de la explotación</h2>
         <form onSubmit={handleFormSubmit}>
           <div className='flex flex-col relative z-0 w-full mb-6 group'>
             <input type="text" name="nombre" placeholder='Añade el nombre' required
