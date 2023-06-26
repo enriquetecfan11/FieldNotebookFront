@@ -189,8 +189,9 @@ const Actividades = () => {
                 <tr>
                   <th className="px-4 py-2">Actividad</th>
                   <th className="px-4 py-2">Fecha</th>
-                  <th className="px-4 py-2">Tiempo de Ejecucion</th>
                   <th className="px-4 py-2">Nº Parcela</th>
+                  <th className="px-4 py-2">Fitosanitarios Usados</th>
+                  <th className="px-4 py-2">Tiempo de Ejecucion</th>
                   <th className="px-4 py-2">Producto</th>
                   <th className="px-4 py-2">Personal</th>
                   <th className="px-4 py-2">Estado actividad</th>
@@ -201,8 +202,9 @@ const Actividades = () => {
                   <tr className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white border-separate border border-slate-500' key={actividad.id}>
                     <td className="px-4 py-2">{actividad.actividad}</td>
                     <td className="px-4 py-2">{actividad.fecha.split('T')[0]}</td>
-                    <td className="px-4 py-2">{actividad.tiempo}</td>
                     <td className="px-4 py-2">{actividad.nparcela}</td>
+                    <td className="px-4 py-2"></td>
+                    <td className="px-4 py-2">{actividad.tiempo}</td>
                     <td className="px-4 py-2">{actividad.producto}</td>
                     <td className="px-4 py-2">{actividad.personal}</td>
                     <td className="px-4 py-2">
