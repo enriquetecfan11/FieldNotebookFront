@@ -8,39 +8,44 @@ import VectorLayer from 'ol/layer/Vector';
 import VectorSource from 'ol/source/Vector';
 import { GeoJSON } from 'ol/format';
 
-function MapContainer() {
+function MapContainer({ Coord_X, Coord_Y }) {
   const mapContainerRef = useRef(null);
 
   useEffect(() => {
-    const centerCoordinates = fromLonLat([-4.148884, 36.797051]);
+    const centerCoordinates = fromLonLat([Coord_X, Coord_Y]);
 
-    // Capa base de Google Hybrid
+    // Capa base de Google Hybrid con opacidad de 0.5 (semi-transparente)
     const googleLayer = new TileLayer({
       source: new XYZ({
         url: 'http://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}',
       }),
+      opacity: 0.5, // Establece la opacidad a 0.5
     });
 
-    // Capa de GeoJSON
-    const geojsonSource = new VectorSource({
-      format: new GeoJSON(),
-      url: 'http://localhost:5000/map.geojson', // Reemplaza con la URL de tu archivo GeoJSON en el servidor
-    });
-
+    // Capa de GeoJSON => http://localhost:5000/Axarquia200.geojson
     const geojsonLayer = new VectorLayer({
-      source: geojsonSource,
+      source: new VectorSource({
+        url: 'http://localhost:5000/map2.geojson',
+        format: new GeoJSON(),
+        featureProjection: 'EPSG:3857',
+      }),
     });
 
     // Configuración del mapa
     const map = new Map({
       target: mapContainerRef.current,
-      layers: [googleLayer, geojsonLayer],
+      layers: [googleLayer, geojsonLayer], // Cambia el orden de las capas si quieres que la capa de Google aparezca por encima
       view: new View({
-        center: centerCoordinates,
+        center: centerCoordinates, // Utiliza las coordenadas x e y proporcionadas
         zoom: 17,
       }),
     });
-  }, []);
+
+    // Limpia el mapa y los eventos asociados al desmontar el componente
+    return () => {
+      map.setTarget(null);
+    };
+  }, [Coord_X, Coord_Y]);
 
   return (
     <div className="w-[400px] h-[300px]">
