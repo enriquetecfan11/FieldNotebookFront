@@ -49,7 +49,7 @@ function MapContainer({ Coord_X, Coord_Y }) {
 
   return (
     <div className="w-[450px] h-[300px]">
-      <div ref={mapContainerRef} className="w-full h-full" />
+      <div ref={mapContainerRef} className="w-full h-full" style={{ pointerEvents: 'none' }} />
     </div>
   );
 }
