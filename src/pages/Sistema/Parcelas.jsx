@@ -22,17 +22,10 @@ const Parcelas = () => {
 
   return (
     <DefaultLayout>
-      <Breadcrumb pageName="Parcelas" />
-      <div className="flex flex-row p-6 justify-center align-middle">
-        <h2 className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
-          Nº Total de Parcelas: {parcelas.length}
-        </h2>
-      </div>
-      <div className="flex flex-row gap-4 justify-center w-[700px] h-[500px]">
-        {parcelas.map((parcela, index) => (
-          <div key={index}>
-            <CardParcelas parcelas={parcelas} id={parcela.id} />
-          </div>
+      <Breadcrumb pageName="Parcelas"/>
+      <div className="grid grid-cols-1 gap-6 mt-4 md:grid-cols-2 xl:grid-cols-3">
+        {parcelas.map(parcela => (
+          <CardParcelas key={parcela.id} parcelas={parcelas} id={parcela.id} />
         ))}
       </div>
     </DefaultLayout>
