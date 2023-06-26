@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import Breadcrumb from '../../../components/Breadcrumb';
 import DefaultLayout from '../../../layout/DefaultLayout';
 import util from '../../../utils/util';
