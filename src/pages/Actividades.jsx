@@ -227,8 +227,8 @@ const Actividades = () => {
                     <td className="px-4 py-2">{actividad.actividad}</td>
                     <td className="px-4 py-2">{actividad.fecha.split('T')[0]}</td>
                     <td className="px-4 py-2">{actividad.nparcela}</td>
-                    <td className="px-4 py-2"></td>
-                    <td className="px-4 py-2">{actividad.tiempo}</td>
+                    <td className="px-4 py-2">{actividad.fitosanitario.split('/')[0].trim()}</td>
+                    <td className="px-4 py-2">{actividad.tiempo} {actividad.cantidadTiempo}</td>
                     <td className="px-4 py-2">{actividad.producto}</td>
                     <td className="px-4 py-2">{actividad.personal}</td>
                     <td className="px-4 py-2">

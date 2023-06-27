@@ -53,7 +53,7 @@ const AddActividades = () => {
       });
   }, []);
 
-  // Get Parcelas
+  //Get Parcelas
   useEffect(() => {
     fetch(util.getParcelas())
       .then(response => response.json())
@@ -88,7 +88,7 @@ const AddActividades = () => {
       actividad: formData.get('actividad'),
       fecha: formData.get('fecha'),
       tiempo: formData.get('tiempo'),
-      cantidadTiempo: formData.get('cantidadtiempo'),
+      cantidadTiempo: formData.get('cantidadTiempo'),
       nparcela: formData.get('nparcela'),
       producto: formData.get('producto'),
       fitosanitario: formData.get('fitosanitario'),
@@ -99,20 +99,22 @@ const AddActividades = () => {
 
     console.log(actividadesData);
 
-    // fetch('http://localhost:5000/actividades', {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(actividadesData),
-    // })
-    //   .then((response) => response.json())
-    //   .then((data) => {
-    //     console.log('Success:', data);
-    //   })
-    //   .catch((error) => {
-    //     console.error('Error:', error);
-    //   });
+    fetch('http://localhost:5000/actividades', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(actividadesData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log('Success:', data);
+        navigate('/actividades');
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+        navigate('/actividades');
+      });
 
     // window.location.reload();
     event.target.reset();
@@ -135,8 +137,8 @@ const AddActividades = () => {
             dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2 dark:bg-[#1A222C] dark:text-white" />
               {/* select // dia semana mes año */}
               <select
-                name="cantidadtiempo"
-                id="cantidadtiempo"
+                name="cantidadTiempo"
+                id="cantidadTiempo"
                 className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2 dark:bg-[#1A222C] dark:text-white">
                 <option value="hora">Hora / Horas</option>
                 <option value="dia">Día / Dias</option>
@@ -153,7 +155,7 @@ const AddActividades = () => {
               className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2 dark:bg-[#1A222C] dark:text-white">
               <option value=''>Seleccione la parcela</option>
               {parcela.map((parcela) => (
-                <option key={parcela.id} value={parcela.nparcela}>
+                <option key={parcela.id} value={parcela.id}>
                   ID Parcela {parcela.id} -- Nº SigPac {parcela.nsigpac}
                 </option>
               ))}
