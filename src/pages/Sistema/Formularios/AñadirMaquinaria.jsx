@@ -44,7 +44,8 @@ const AñadirMaquinaria = () => {
         navigate('/maquinaria')
       });
 
-    window.location.reload();
+    // window.location.reload();
+    navigate('/maquinaria')
     form.reset();
   }
 
