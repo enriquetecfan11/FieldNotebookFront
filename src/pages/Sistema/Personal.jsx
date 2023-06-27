@@ -46,7 +46,7 @@ const Personal = () => {
         <h2 className="text-xl font-bold mt-2 text-center">Filtrado de tabla</h2>
         <div className="flex justify-center mt-2">
           <select value={filtroCarnet} onChange={e => setFiltroCarnet(e.target.value)}
-            className="font-bold mb-2 mr-5 text-center"
+            className="font-bold mb-2 mr-5 text-center dark:bg-[#1A222C]"
           >
             <option value="">Filtar por carnet fitosanitario</option>
             <option value="true">Si</option>
@@ -58,7 +58,7 @@ const Personal = () => {
         {/* Tabla Personal */}
         <div className="">
           <table id="tabla-personas" className="w-full text-sm text-left text-gray-500 dark:text-gray-400 lg:">
-            <thead className='text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 border-separate border border-slate-500'>
+            <thead className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white border-separate border border-slate-500'>
               <tr>
                 <th className='px-6 py-3 border-slate-500'>Nombre</th>
                 <th className='px-6 py-3 border-slate-500'>NIF</th>

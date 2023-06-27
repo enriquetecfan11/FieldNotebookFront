@@ -209,7 +209,7 @@ const Actividades = () => {
           <div className="flex flex-col ga  p-4 items-center justify-center">
             <h2 className="text-xl font-bold mb-2 text-center">Tabla de Actividades</h2>
             <table className=''>
-              <thead className=''>
+              <thead className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white border-separate border border-slate-500'>
                 <tr>
                   <th className="px-4 py-2">Actividad</th>
                   <th className="px-4 py-2">Fecha</th>
