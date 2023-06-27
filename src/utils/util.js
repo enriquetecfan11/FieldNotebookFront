@@ -13,3 +13,5 @@ export default {
   getParcelaID: () => `${API_BASE_URL}/parcelas/:id`,
   parcelasSigPac: () => `${API_BASE_URL}/parcelasigpac`,
 };
+
+

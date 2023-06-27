@@ -208,7 +208,7 @@ const Actividades = () => {
                 <tr>
                   <th className="px-4 py-2">Actividad</th>
                   <th className="px-4 py-2">Fecha</th>
-                  <th className="px-4 py-2">Nº Parcela</th>
+                  <th className="px-4 py-2">Nombre de Parcela</th>
                   <th className="px-4 py-2">Fitosanitarios Usados</th>
                   <th className="px-4 py-2">Tiempo de Ejecucion</th>
                   <th className="px-4 py-2">Producto</th>

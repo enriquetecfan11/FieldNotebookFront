@@ -25,7 +25,7 @@ function MapContainer({ Coord_X, Coord_Y }) {
   // Capa de GeoJSON => http://localhost:5000/Axarquia200.geojson
   const geojsonLayer = new VectorLayer({
     source: new VectorSource({
-      url: 'http://localhost:5000/map2.geojson',
+      url: 'http://localhost:5000/MapaVelezMalaga.geojson',
       format: new GeoJSON(),
       featureProjection: 'EPSG:3857',
     }),
