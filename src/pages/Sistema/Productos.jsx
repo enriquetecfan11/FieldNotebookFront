@@ -11,7 +11,7 @@ const Productos = () => {
     fetch(util.getProductos())
       .then(response => response.json())
       .then(data => {
-        setProductosAgricolas(data);
+        setProductosAgricolas(data.slice(0, 10));
       })
       .catch(error => {
         console.error('Error al obtener los datos de los productos:', error);
@@ -23,6 +23,7 @@ const Productos = () => {
       <div className="mx-auto max-w-270">
         <Breadcrumb pageName="Productos" />
         <div className="flex flex-col gap-4">
+          <p>Lista de los ulitmos 10 productos</p>
           <div className="flex justify-center mb-5 mt-5">
             <div className="w-full">
               <Link to="/anadirproductos" className="btn btn-primary font-bold mb-2 mr-5 text-center">Pincha aqui para añadir productos</Link>

@@ -27,13 +27,20 @@ const AñadirProductos = () => {
       body: JSON.stringify(producto)
     })
       .then(response => response.json())
+      .then(data =>{
+        console.log('Success:', data);
+        // alert('Se ha añadido el producto correctamente.');
+        navigate('/productos');
+      })
       .catch(error => {
-        console.error('Error al enviar los datos:', error);
+        console.error('Error al enviar los datos:', error);+
+        naivgate('/productos')
         // alert('Se produjo un error al enviar los datos. Por favor, inténtalo de nuevo.');
       });
 
-    window.location.reload();
-    event.target.reset();
+    // window.location.reload();
+    // event.target.reset();
+    naivgate('/productos')
   }
 
   return (
