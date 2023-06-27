@@ -126,18 +126,18 @@ const AddActividades = () => {
         <Breadcrumb pageName="Formulario para añadir actividades" />
         <form onSubmit={handelFormSubmit}>
           <div className="flex flex-col gap-4">
-            <input type="text" name="actividad" id="actividad" placeholder="Nombre de la actividad" required className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2 dark:bg-[#1A222C] text-white" />
+            <input type="text" name="actividad" id="actividad" placeholder="Nombre de la actividad" required className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2 dark:bg-[#1A222C] dark:text-white" />
 
-            <input type="date" name="fecha" id="fecha" placeholder="Fecha de la actividad" required className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2 dark:bg-[#1A222C] text-white" />
+            <input type="date" name="fecha" id="fecha" placeholder="Fecha de la actividad" required className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2 dark:bg-[#1A222C] dark:text-white" />
 
             <div className="flex flex-row">
               <input type="number" name="tiempo" id="tiempo" placeholder="Tiempo empleado" required className="w-full px-4 py-2.5 rounded-lg border border-gray-300 
-            dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2 dark:bg-[#1A222C] text-white" />
+            dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2 dark:bg-[#1A222C] dark:text-white" />
               {/* select // dia semana mes año */}
               <select
                 name="cantidadtiempo"
                 id="cantidadtiempo"
-                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2 dark:bg-[#1A222C] text-white">
+                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2 dark:bg-[#1A222C] dark:text-white">
                 <option value="hora">Hora / Horas</option>
                 <option value="dia">Día / Dias</option>
                 <option value="semana">Semana / Semanas</option>
@@ -146,11 +146,11 @@ const AddActividades = () => {
               </select>
             </div>
 
-            <label htmlFor="Parcelas" className="dark:bg-[#1A222C] text-white">Seleccione la parcela que va ha usar</label>
+            <label htmlFor="Parcelas" className="dark:bg-[#1A222C] dark:text-white">Seleccione la parcela que va ha usar</label>
             <select
               name="nparcela"
               id="nparcela"
-              className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2 dark:bg-[#1A222C] text-white">
+              className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2 dark:bg-[#1A222C] dark:text-white">
               <option value=''>Seleccione la parcela</option>
               {parcela.map((parcela) => (
                 <option key={parcela.id} value={parcela.nparcela}>
@@ -159,11 +159,11 @@ const AddActividades = () => {
               ))}
             </select>
 
-            <label htmlFor="producto" className="dark:bg-[#1A222C] text-white">Seleccione el producto usado</label>
+            <label htmlFor="producto" className="dark:bg-[#1A222C] dark:text-white">Seleccione el producto usado</label>
             <select
               name="producto"
               id="producto"
-              className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2 dark:bg-[#1A222C] text-white">
+              className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2 dark:bg-[#1A222C] dark:text-white">
               <option value=''>Seleccione el producto</option>
               {productos.map((producto) => (
                 <option key={producto.id} value={producto.nombre}>
@@ -172,11 +172,11 @@ const AddActividades = () => {
               ))}
             </select>
 
-            <label htmlFor="fistosanitariolist" className="dark:bg-[#1A222C] text-white">Seleccione el fitosaniario usado en la actividad</label>
+            <label htmlFor="fistosanitariolist" className="dark:bg-[#1A222C] dark:text-white">Seleccione el fitosaniario usado en la actividad</label>
             <select
               name='fitosanitario'
               id='fitosanitario'
-              className='w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-[#1A222C] text-white'
+              className='w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-[#1A222C] dark:text-white'
               required
             >
               <option value=''>Seleccione el fitosanitario</option>
@@ -186,11 +186,11 @@ const AddActividades = () => {
                 </option>
               ))}
             </select>
-            <label htmlFor="maquinaria" className="dark:bg-[#1A222C] text-white">Seleccione la maquinaria usada</label>
+            <label htmlFor="maquinaria" className="dark:bg-[#1A222C] dark:text-white">Seleccione la maquinaria usada</label>
             <select
               name="maquinaria"
               id="maquinaria"
-              className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2 dark:bg-[#1A222C] text-white"
+              className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2 dark:bg-[#1A222C] dark:text-white"
             >
               <option value=''>Seleccione la maquinaria</option>
               {maquinaria.map((maquinaria) => (
@@ -200,11 +200,11 @@ const AddActividades = () => {
               ))}
             </select>
 
-            <label htmlFor="personal" className="dark:bg-[#1A222C] text-white">Seleccione el personal empleado en la actividad</label>
+            <label htmlFor="personal" className="dark:bg-[#1A222C] dark:text-white">Seleccione el personal empleado en la actividad</label>
             <select
               name="personal"
               id="personal"
-              className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2 dark:bg-[#1A222C] text-white"
+              className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2 dark:bg-[#1A222C] dark:text-white"
             >
               <option value=''>Seleccione el personal</option>
               {personal.map((personal) => (
