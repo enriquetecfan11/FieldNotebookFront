@@ -8,17 +8,32 @@ import { useEffect, useState } from 'react';
 
 const AñadirFitosanitarios = () => {
   const [fitosanitarioslist, setfitosanitarioslist] = useState([]);
+  const [parcela, setParcelas] = useState([]);
   const navigate = useNavigate();
+
 
   // Realizar la solicitud GET para cargar la lista de fitosnanitarios
   useEffect(() => {
-    fetch(util.getFitosanitariosList())
+    fetch(util.getFitosanitarios())
       .then(response => response.json())
       .then(data => {
         setfitosanitarioslist(data);
       })
       .catch(error => {
         console.error('Error al obtener los datos de los productos:', error);
+      });
+  }, []);
+
+
+  // Realizar la solicitud GET para cargar la lista de parcelas
+  useEffect(() => {
+    fetch(util.getParcelas())
+      .then(response => response.json())
+      .then(data => {
+        setParcelas(data);
+      })
+      .catch(error => {
+        console.error('Error al obtener los datos de las parcelas:', error);
       });
   }, []);
 
@@ -44,13 +59,21 @@ const AñadirFitosanitarios = () => {
       body: JSON.stringify(fitosanitario)
     })
       .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+        // alert('Se ha añadido el personal correctamente.');
+        navigate('/fitosanitarios');
+        event.target.reset();
+      })
       .catch(error => {
         console.error('Error al enviar los datos:', error);
+        navigate('/fitosanitarios');
         // alert('Se produjo un error al enviar los datos. Por favor, inténtalo de nuevo.');
       });
 
-    window.location.reload();
-    event.target.reset();
+    // window.location.reload();
+    // event.target.reset();
+    navigate('/fitosanitarios')
   }
 
   return (
@@ -75,7 +98,7 @@ const AñadirFitosanitarios = () => {
             </select>
 
             <input
-              type='text'
+              type='number'
               name='cantidad'
               id='cantidad'
               placeholder='Cantidad'
@@ -83,14 +106,17 @@ const AñadirFitosanitarios = () => {
               required
             />
 
-            <input
-              type="number"
+            <label htmlFor="Parcelas">Seleccione la parcela que va ha usar</label>
+            <select
               name="nparcela"
               id="nparcela"
-              placeholder='Nº de parcela usada'
-              className='w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300'
-              required
-            />
+              className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2">
+              {parcela.map((parcela) => (
+                <option key={parcela.id} value={parcela.id}>
+                  ID Parcela {parcela.id} -- Nº SigPac {parcela.nsigpac}
+                </option>
+              ))}
+            </select>
 
             <input
               type='date'
@@ -102,7 +128,7 @@ const AñadirFitosanitarios = () => {
             />
 
             <input
-              type='text'
+              type='number'
               name='superficie'
               id='superficie'
               placeholder='Superficie tratada'

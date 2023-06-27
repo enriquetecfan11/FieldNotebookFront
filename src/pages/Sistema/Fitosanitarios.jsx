@@ -9,7 +9,7 @@ const Fitosanitarios = () => {
 
   // Realizar la solicitud GET al cargar la lista
   useEffect(() => {
-    fetch(util.getFitosanitarios())
+    fetch(util.getFitosanitariosList())
       .then(response => response.json())
       .then(data => {
         setfitosanitarios(data);
@@ -26,7 +26,7 @@ const Fitosanitarios = () => {
         <div className="flex flex-col gap-4">
           <div className="flex justify-center mb-5 mt-5">
             <div className="w-full">
-              <Link to="/anadirfitosanitarios" className="btn btn-primary font-bold mb-2 mr-5 text-center">Pincha aqui para añadir productos</Link>
+              <Link to="/anadirfitosanitarios" className="btn btn-primary font-bold mb-2 mr-5 text-center">Pincha aqui para añadir los productos fitosanitarios usados</Link>
             </div>
           </div>
         </div>
@@ -48,7 +48,7 @@ const Fitosanitarios = () => {
                     <td className='px-6 py-4'>{fitosanitario.nombre}</td>
                     <td className='px-6 py-4'>{fitosanitario.cantidad}</td>
                     <td className='px-6 py-4'>{fitosanitario.nparcela}</td>
-                    <td className='px-6 py-4'>{fitosanitario.fecha}</td>
+                    <td className='px-6 py-4'>{fitosanitario.fecha.split('T')[0]}</td>
                     <td className='px-6 py-4'>{fitosanitario.superficie}</td>
                   </tr>
                 ))}
