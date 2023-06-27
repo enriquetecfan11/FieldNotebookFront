@@ -75,10 +75,10 @@ const Personal = () => {
                   <td className='px-6 py-4 border-slate-500'>{persona.nombre}</td>
                   <td className='px-6 py-4 border-slate-500'>{persona.nif}</td>
                   <td className='px-6 py-4 border-slate-500'>{persona.ninscripcion}</td>
-                  <td className='px-6 py-4 border-slate-500'>{persona.carnetfito ? 'Sí' : 'No'}</td>
-                  <td className='px-6 py-4 border-slate-500'>{persona.cualificado ? 'Sí' : 'No'}</td>
-                  <td className='px-6 py-4 border-slate-500'>{persona.fumigacion ? 'Sí' : 'No'}</td>
-                  <td className='px-6 py-4 border-slate-500'>{persona.piloto ? 'Sí' : 'No'}</td>
+                  <td className={`px-6 py-4 border-slate-500 ${persona.carnetfito ? 'text-success' : 'text-danger'}`}>{persona.carnetfito ? 'Sí' : 'No'}</td>
+                  <td className={`px-6 py-4 border-slate-500 ${persona.cualificado ? 'text-success' : 'text-danger'}`}>{persona.cualificado ? 'Sí' : 'No'}</td>
+                  <td className={`px-6 py-4 border-slate-500 ${persona.fumigacion ? 'text-success' : 'text-danger'}`}>{persona.fumigacion ? 'Sí' : 'No'}</td>
+                  <td className={`px-6 py-4 border-slate-500 ${persona.piloto ? 'text-success' : 'text-danger'}`}>{persona.cualificado ? 'Sí' : 'No'}</td>
                 </tr>
               ))}
             </tbody>
