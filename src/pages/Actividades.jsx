@@ -192,10 +192,10 @@ const Actividades = () => {
       <h2 className="text-xl font-bold mt-2 text-center">Filtrado de tabla</h2>
       <div className="flex justify-center mt-2">
         <input type="date" value={filtroFecha} onChange={e => setFiltroFecha(e.target.value)}
-          className="font-bold mb-2 mr-5 text-center"
+          className="font-bold mb-2 mr-5 text-center dark:bg-[#1A222C]"
         />
         <select value={filtroEstado} onChange={e => setFiltroEstado(e.target.value)}
-          className="font-bold mb-2 mr-5 text-center"
+          className="font-bold mb-2 mr-5 text-center dark:bg-[#1A222C]"
         >
           <option value="">Filtar por estado</option>
           <option value="true">Hechas</option>

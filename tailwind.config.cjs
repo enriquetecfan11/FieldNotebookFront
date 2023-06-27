@@ -27,7 +27,7 @@ module.exports = {
       'gray-3': '#FAFAFA',
       whiten: '##5EDA8D',
       whiter: '#F5F7FD',
-      boxdark: '#24303F',
+      boxdark: '#1A222C',
       'boxdark-2': '#1A222C',
       strokedark: '#2E3A47',
       'form-strokedark': '#3d4d60',
