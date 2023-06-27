@@ -23,10 +23,10 @@ const Productos = () => {
       <div className="mx-auto max-w-270">
         <Breadcrumb pageName="Productos" />
         <div className="flex flex-col gap-4">
-          <p className='dark:text-white font-bold'>Lista de los ulitmos 10 productos</p>
           <div className="flex justify-center mb-5 mt-5">
             <div className="w-full">
-              <Link to="/anadirproductos" className="btn btn-primary font-bold mb-2 mr-5 text-center dark:text-white">Pincha aqui para añadir productos</Link>
+              <p className='dark:text-white'>Lista de los 10 ultimos productos añadidos</p>
+              <Link to="/anadirproductos" className="btn btn-primary font-bold mb-2 mr-5 text-center dark:text-white">Haz clic aquí para añadir maquinaria</Link>
             </div>
           </div>
         </div>
