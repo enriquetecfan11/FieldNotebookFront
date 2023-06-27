@@ -80,13 +80,13 @@ const AñadirFitosanitarios = () => {
     <DefaultLayout>
       <Breadcrumb pageName="Formulario para añadir fitosanitarios" />
       <div className='flex flex-col gap-4 my-5'>
-        <h2>Seleccione el fitosanitario que va ha usar</h2>
+        <h2 className='dark:bg-[#1A222C] dark:text-white'>Seleccione el fitosanitario que va ha usar</h2>
         <form onSubmit={handleFormSubmit}>
           <div className='flex flex-col gap-4'>
             <select
               name='nombre'
               id='nombre'
-              className='w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300'
+              className='w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-[#1A222C] dark:text-white'
               required
             >
               <option value=''>Seleccione el fitosanitario</option>
@@ -102,15 +102,15 @@ const AñadirFitosanitarios = () => {
               name='cantidad'
               id='cantidad'
               placeholder='Cantidad'
-              className='w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300'
+              className='w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-[#1A222C] dark:text-white'
               required
             />
 
-            <label htmlFor="Parcelas">Seleccione la parcela que va ha usar</label>
+            <label htmlFor="Parcelas" className='text-black dark:bg-[#1A222C] dark:text-white'>Seleccione la parcela que va ha usar</label>
             <select
               name="nparcela"
               id="nparcela"
-              className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2">
+              className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2 dark:bg-[#1A222C] dark:text-white">
               {parcela.map((parcela) => (
                 <option key={parcela.id} value={parcela.id}>
                   ID Parcela {parcela.id} -- Nº SigPac {parcela.nsigpac}
@@ -123,7 +123,7 @@ const AñadirFitosanitarios = () => {
               name='fecha'
               id='fecha'
               placeholder='Fecha'
-              className='w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300'
+              className='w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-[#1A222C] dark:text-white'
               required
             />
 
@@ -132,7 +132,7 @@ const AñadirFitosanitarios = () => {
               name='superficie'
               id='superficie'
               placeholder='Superficie tratada'
-              className='w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300'
+              className='w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-[#1A222C] dark:text-white'
               required
             />
 

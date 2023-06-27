@@ -58,51 +58,51 @@ const AñadirPersonal = () => {
         <form onSubmit={handleFormSubmit}>
           <div className='flex flex-col relative z-0 w-full mb-6 group'>
             <input type="text" name="nombre" placeholder='Añade el nombre' required
-              className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2"
+              className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2 dark:bg-[#1A222C] text-white"
             />
             <input type="text" name="nif" placeholder='Añade el NIF' required
-              className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2"
+              className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2 dark:bg-[#1A222C] text-white"
             />
             <input type="text" name="inscripcion" placeholder='Añade el Número de Inscripción' required
-              className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2" />
+              className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2 dark:bg-[#1A222C] text-white" />
 
-            <h3 className='my-3'>Si la persona tiene el carnet fitosanitario rellena el siguiente formulario</h3>
+            <h3 className='my-3 text-black dark:bg-[#1A222C] dark:text-white'>Si la persona tiene el carnet fitosanitario rellena el siguiente formulario</h3>
             <div className="flex flex-col my-3s">
               <div className="flex flex-col gap-4">
                 <div className="flex flex-row gap-5">
-                  <h4 className=''>Carnet Básico</h4>
+                  <h4 className='text-black dark:bg-[#1A222C] dark:text-white'>Carnet Básico</h4>
                   <div className="flex flex-row gap-4">
                     <input type="radio" name="basico" id="basico-yes" value="true" />
-                    <label htmlFor="basico-yes">Sí</label>
+                    <label htmlFor="basico-yes" className='text-black dark:bg-[#1A222C] dark:text-white'>Sí</label>
                     <input type="radio" name="basico" id="basico-no" value="false" />
-                    <label htmlFor="basico-no">No</label>
+                    <label htmlFor="basico-no" className=' text-black dark:bg-[#1A222C] dark:text-white'>No</label>
                   </div>
                 </div>
               </div>
               <div>
-                <div className='my-3'>
-                  <h4>Seleccione el tipo de carnet</h4>
+                <div className='my-3 dark:bg-[#1A222C] text-white'>
+                  <h4 className='text-black dark:bg-[#1A222C] dark:text-white'>Seleccione el tipo de carnet</h4>
                   <div className='flex flex-col gap-4'>
                     <h4>Cualificado</h4>
                     <div className="flex flex-row gap-4">
                       <input type="radio" name="cualificado" id="cualificado-yes" value="true" />
-                      <label htmlFor="cualificado-yes">Sí</label>
+                      <label className="text-black dark:bg-[#1A222C] dark:text-white" htmlFor="cualificado-yes">Sí</label>
                       <input type="radio" name="cualificado" id="cualificado-no" value="false" />
-                      <label htmlFor="cualificado-no">No</label>
+                      <label className='text-black dark:bg-[#1A222C] dark:text-white' htmlFor="cualificado-no">No</label>
                     </div>
-                    <h4>Fumigación</h4>
-                    <div className="flex flex-row gap-4">
+                    <h4 className='text-black dark:bg-[#1A222C] dark:text-white'>Fumigación</h4>
+                    <div className="flex flex-row gap-4 ">
                       <input type="radio" name="fumigacion" id="fumigacion-yes" value="true" />
-                      <label htmlFor="fumigacion-yes">Sí</label>
+                      <label htmlFor="fumigacion-yes" className='text-black dark:bg-[#1A222C] dark:text-white'>Sí</label>
                       <input type="radio" name="fumigacion" id="fumigacion-no" value="false" />
-                      <label htmlFor="fumigacion-no">No</label>
+                      <label htmlFor="fumigacion-no" className='text-black dark:bg-[#1A222C] dark:text-white'>No</label>
                     </div>
-                    <h4>Piloto</h4>
+                    <h4 className='text-black dark:bg-[#1A222C] dark:text-white'>Piloto</h4>
                     <div className="flex flex-row gap-4">
                       <input type="radio" name="piloto" id="piloto-yes" value="true" />
-                      <label htmlFor="piloto-yes">Sí</label>
+                      <label htmlFor="piloto-yes" className='text-black dark:bg-[#1A222C] dark:text-white'>Sí</label>
                       <input type="radio" name="piloto" id="piloto-no" value="false" />
-                      <label htmlFor="piloto-no">No</label>
+                      <label htmlFor="piloto-no" className='text-black dark:bg-[#1A222C] dark:text-white'>No</label>
                     </div>
                   </div>
                 </div>
