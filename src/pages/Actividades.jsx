@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import ReactApexChart from "react-apexcharts";
 import { Link } from 'react-router-dom';
 import util from "../utils/util.js";
+import { useNavigate } from 'react-router-dom';
+
 
 const Actividades = () => {
   const [actividades, setActividades] = useState([]);
@@ -14,6 +16,8 @@ const Actividades = () => {
   const [filtroPersonal, setFiltroPersonal] = useState('');
   const [filtroParcela, setFiltroParcela] = useState('');
   const [filtroEstado, setFiltroEstado] = useState('');
+  const navigate = useNavigate();
+
 
 
   useEffect(() => {
@@ -37,7 +41,7 @@ const Actividades = () => {
   }, []);
 
   const handleActualizarActividad = (actividad) => {
-    fetch(util.getActividadUrl(), {
+    fetch(util.getActividadUrl(actividad.id), {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -46,22 +50,13 @@ const Actividades = () => {
     })
       .then(response => response.json())
       .then(data => {
+        navigate('/actividades')
+        alert("Actividad Actualizada Correctamente")
         console.log('Actividad actualizada:', data);
       })
       .catch(error => {
         console.error('Error al actualizar la actividad:', error);
       });
-  };
-
-  const handleEstadoChange = (id, estado) => {
-    const newActividades = actividades.map(actividad => {
-      if (actividad.id === id) {
-        return { ...actividad, estado };
-      }
-      return actividad;
-    });
-    setActividades(newActividades);
-    handleActualizarActividad({ id, estado });
   };
 
   const actividadesFiltradas = actividades.filter(actividad => {
@@ -232,26 +227,11 @@ const Actividades = () => {
                     <td className="px-4 py-2">{actividad.producto}</td>
                     <td className="px-4 py-2">{actividad.personal}</td>
                     <td className="px-4 py-2">
-                      {/* if hecho is equal to true  no input */}
-                      {actividad.hecho ? (
-                        <button
-                          onClick={() =>
-                            handleEstadoChange(actividad.id, true)
-                          }
-                          className="text-primary bg-green-400 px-4 py-2 rounded-md"
-                        >
-                          Hecho
-                        </button>
-                      ) : (
-                        <button
-                          onClick={() =>
-                            handleEstadoChange(actividad.id, false)
-                          }
-                          className="text-danger bg-blue-400 px-4 py-2 rounded-md"
-                        >
-                          Pendiente
-                        </button>
-                      )}
+                      <input
+                        type="checkbox"
+                        checked={actividad.hecho}
+                        onChange={() => handleActualizarActividad(actividad)}
+                      />
                     </td>
                   </tr>
                 ))}

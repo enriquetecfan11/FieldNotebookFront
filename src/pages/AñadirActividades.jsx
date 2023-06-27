@@ -16,11 +16,15 @@ const AddActividades = () => {
 
   const navigate = useNavigate();
 
-
   // Get Maquinaria
   useEffect(() => {
     fetch(util.getMaquinaria())
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Error al obtener los datos de la maquinaria');
+        }
+        return response.json();
+      })
       .then(data => {
         setMaquinaria(data);
       })
@@ -28,6 +32,7 @@ const AddActividades = () => {
         console.error('Error al obtener los datos de la maquinaria:', error);
       });
   }, []);
+
 
   // Get Personal
   useEffect(() => {
@@ -63,7 +68,8 @@ const AddActividades = () => {
       .catch(error => {
         console.error('Error al obtener los datos de las actividades:', error);
       });
-  })
+  }, []);
+
 
   // Realizar la solicitud GET para cargar la lista de fitosnanitarios
   useEffect(() => {
@@ -97,9 +103,7 @@ const AddActividades = () => {
       hecho: false,
     }
 
-    console.log(actividadesData);
-
-    fetch('http://localhost:5000/actividades', {
+    fetch(util.getActividadesUrl(), {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -116,9 +120,11 @@ const AddActividades = () => {
         navigate('/actividades');
       });
 
+    console.log(actividadesData);
     // window.location.reload();
     event.target.reset();
     navigate('/actividades')
+
   }
 
 

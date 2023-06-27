@@ -2,7 +2,7 @@ const API_BASE_URL = 'http://localhost:5000'; // Reemplaza esta URL con la base 
 
 export default {
   getActividadesUrl: () => `${API_BASE_URL}/actividades`,
-  getActividadUrl: (actividadId) => `${API_BASE_URL}/actividades/${actividadId}`,
+  getActividadUrl: (id) => `${API_BASE_URL}/actividades/${id}`,
   getPersonal: () => `${API_BASE_URL}/personal`,
   getMaquinaria: () => `${API_BASE_URL}/maquinaria`,
   getProductos: () => `${API_BASE_URL}/productos`,
@@ -11,5 +11,4 @@ export default {
   getUsuarios: () => `${API_BASE_URL}/usuarios`,
   getParcelas: () => `${API_BASE_URL}/parcelas`,
   getParcelaID: () => `${API_BASE_URL}/parcelas/:id`,
-
 };
