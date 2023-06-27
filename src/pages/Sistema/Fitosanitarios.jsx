@@ -26,7 +26,7 @@ const Fitosanitarios = () => {
         <div className="flex flex-col gap-4">
           <div className="flex justify-center mb-5 mt-5">
             <div className="w-full">
-              <Link to="/anadirfitosanitarios" className="btn btn-primary font-bold mb-2 mr-5 text-center">Pincha aqui para añadir los productos fitosanitarios usados</Link>
+              <Link to="/anadirfitosanitarios" className="btn btn-primary font-bold mb-2 mr-5 text-center dark:text-white">Pincha aqui para añadir los productos fitosanitarios usados</Link>
             </div>
           </div>
         </div>

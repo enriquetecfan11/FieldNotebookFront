@@ -163,11 +163,11 @@ const Actividades = () => {
 
   return (
     <DefaultLayout>
-      <h1 className="text-xl font-bold mb-2 text-center">Actividades</h1>
+      <h1 className="text-xl font-bold mb-2 text-center dark:text-white">Actividades</h1>
       {/* Bloque de estadísticas */}
       <div className="flex justify-center gap-4">
         <div>
-          <h2 className="text bg-green-400 px-4 py-2 rounded-md">Total de Actividades: {totalActividades} </h2>
+          <h2 className="text bg-green-400 px-4 py-2 rounded-md dark:text-white">Total de Actividades: {totalActividades} </h2>
         </div>
         <div>
           <h2 className="text-primary bg-primary-400 px-4 py-2 rounded-md">Actividades Hechas: {actividadesHechas} </h2>
@@ -181,7 +181,7 @@ const Actividades = () => {
       <div className="flex justify-center">
         <div className="flex">
           <div className="flex flex-col ga  p-4 items-center justify-center">
-            <h2 className="text-xl font-bold mb-2 text-center">Gráfico de Actividades</h2>
+            <h2 className="text-xl font-bold mb-2 text-center dark:text-white">Gráfico de Actividades</h2>
             <ReactApexChart options={chartOptions} series={series} type="bar" width={480} />
           </div>
         </div>
@@ -189,25 +189,25 @@ const Actividades = () => {
 
 
       {/* Bloque de filtros */}
-      <h2 className="text-xl font-bold mt-2 text-center">Filtrado de tabla</h2>
+      <h2 className="text-xl font-bold mt-2 text-center dark:text-white">Filtrado de tabla</h2>
       <div className="flex justify-center mt-2">
         <input type="date" value={filtroFecha} onChange={e => setFiltroFecha(e.target.value)}
-          className="font-bold mb-2 mr-5 text-center dark:bg-[#1A222C]"
+          className="font-bold mb-2 mr-5 text-center dark:bg-[#1A222C] dark:text-white"
         />
         <select value={filtroEstado} onChange={e => setFiltroEstado(e.target.value)}
-          className="font-bold mb-2 mr-5 text-center dark:bg-[#1A222C]"
+          className="font-bold mb-2 mr-5 text-center dark:bg-[#1A222C] dark:text-white"
         >
           <option value="">Filtar por estado</option>
           <option value="true">Hechas</option>
           <option value="false">Pendientes</option>
         </select>
-        <Link to="/anadiractividades" className="btn btn-primary font-bold mb-2 mr-5 text-center">Añadir Actividades</Link>
+        <Link to="/anadiractividades" className="btn btn-primary font-bold mb-2 mr-5 text-center dark:text-white">Añadir Actividades</Link>
       </div>
       <div className="">
 
         <div className="actividades-lista">
           <div className="flex flex-col ga  p-4 items-center justify-center">
-            <h2 className="text-xl font-bold mb-2 text-center">Tabla de Actividades</h2>
+            <h2 className="text-xl font-bold mb-2 text-center dark:text-white">Tabla de Actividades</h2>
             <table className=''>
               <thead className='px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white border-separate border border-slate-500'>
                 <tr>

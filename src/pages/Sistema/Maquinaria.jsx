@@ -28,8 +28,8 @@ const Maquinaria = () => {
         <div className="flex flex-col gap-4">
           <div className="flex justify-center mb-5 mt-5">
             <div className="w-full">
-              <p>Lista de las ultimas 10 maquinas añadidas</p>
-              <Link to="/anadirmaquinaria" className="btn btn-primary font-bold mb-2 mr-5 text-center">Haz clic aquí para añadir maquinaria</Link>
+              <p className='dark:text-white'>Lista de las ultimas 10 maquinas añadidas</p>
+              <Link to="/anadirmaquinaria" className="btn btn-primary font-bold mb-2 mr-5 text-center dark:text-white">Haz clic aquí para añadir maquinaria</Link>
             </div>
           </div>
           <div className="flex flex-col gap-4">

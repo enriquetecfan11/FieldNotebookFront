@@ -68,13 +68,13 @@ const CalendarioActividades = () => {
   return (
     <DefaultLayout>
       <div className="container mx-auto p-4">
-        <h1 className="text-2xl font-bold mb-4">Calendario de Actividades</h1>
+        <h1 className="text-2xl font-bold mb-4 dark:text-white">Calendario de Actividades</h1>
         <div className="flex justify-center mb-4">
-          <Button className='bg-black hover:bg-blue-400 text-white font-bold border-b-4 border-blue-700 hover:border-blue-500 rounded' type="primary" icon="left" onClick={handlePrevMonth} />
-          <span className="mx-4 text-lg font-semibold">
+          <Button className='bg-black hover:bg-blue-400 text-white font-bold border-b-4 border-blue-700 hover:border-blue-500 rounded dark:text-white' type="primary" icon="left" onClick={handlePrevMonth} />
+          <span className="mx-4 text-lg font-semibold dark:text-white">
             {currentMonth.toLocaleString('default', { month: 'long', year: 'numeric' })}
           </span>
-          <Button className='bg-black hover:bg-blue-400 text-white font-bold border-b-4 border-blue-700 hover:border-blue-500 rounded' type="primary" icon="right" onClick={handleNextMonth} />
+          <Button className='bg-black hover:bg-blue-400 text-white font-bold border-b-4 border-blue-700 hover:border-blue-500 rounded dark:text-white' type="primary" icon="right" onClick={handleNextMonth} />
         </div>
         <div className="flex justify-center">
           <div className="w-full sm:w-1/2">
@@ -88,7 +88,7 @@ const CalendarioActividades = () => {
                   ? 'bg-graydark text-white'
                   : hasActivities
                     ? 'bg-graydark-500 text-meta-5'
-                    : 'bg-gray-200'
+                    : 'bg-gray-200 dark:text-white'
                   }`;
 
                 return (
@@ -110,30 +110,30 @@ const CalendarioActividades = () => {
                 {filteredActividades.map(actividad => (
                   <li key={actividad.id} className="flex items-center mb-2">
                     <Badge color="blue" className="mb-2 mt-9 mr-2" />
-                    <span>{actividad.actividad}</span>
+                    <span className='dark:text-white'>{actividad.actividad}</span>
                   </li>
                 ))}
               </ul>
             ) : (
-              <p className="text-xl font-bold mb-2 text-center">No hay actividades para esta fecha.</p>
+              <p className="text-xl font-bold mb-2 text-center dark:text-white">No hay actividades para esta fecha.</p>
             )}
           </div>
         </div>
         <div className="mt-9 flex flex-col items-centr mb-5">
-          <p className="text-lg font-semibold">Leyenda del calendario</p>
+          <p className="text-lg font-semibold dark:text-white">Leyenda del calendario</p>
 
           <div className='flex flex-col sm:flex-row m-1'>
             <div className="flex items-center mb-4 m-1">
               <Badge color="blue" className="mr-2" />
-              <span>Actividades para el día seleccionado</span>
+              <span className='dark:text-white'>Actividades para el día seleccionado</span>
             </div>
             <div className="flex items-center mb-4 m-1">
               <Badge color="graydark" className="mr-2" />
-              <span className='bg-graydark text-white'>Día seleccionado</span>
+              <span className='bg-graydark text-white '>Día seleccionado</span>
             </div>
             <div className="flex items-center mb-4 m-1">
               <Badge color="gray" className="mr-2" />
-              <span>Días sin actividades</span>
+              <span className='dark:text-white'>Días sin actividades</span>
             </div>
           </div>
         </div>

@@ -39,14 +39,14 @@ const Personal = () => {
 
         <div className="flex justify-center mb-5 mt-5">
           <div className="w-full">
-            <Link to="/anadirpersonal" className="btn btn-primary font-bold mb-2 mr-5 text-center">Pincha aqui para añadir personal</Link>
+            <Link to="/anadirpersonal" className="btn btn-primary font-bold mb-2 mr-5 text-center dark:text-white">Pincha aqui para añadir personal</Link>
           </div>
         </div>
 
-        <h2 className="text-xl font-bold mt-2 text-center">Filtrado de tabla</h2>
+        <h2 className="text-xl font-bold mt-2 text-center dark:text-white">Filtrado de tabla</h2>
         <div className="flex justify-center mt-2">
           <select value={filtroCarnet} onChange={e => setFiltroCarnet(e.target.value)}
-            className="font-bold mb-2 mr-5 text-center dark:bg-[#1A222C]"
+            className="font-bold mb-2 mr-5 text-center dark:bg-[#1A222C] dark:text-white"
           >
             <option value="">Filtar por carnet fitosanitario</option>
             <option value="true">Si</option>

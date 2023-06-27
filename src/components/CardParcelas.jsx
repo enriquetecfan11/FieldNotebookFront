@@ -15,16 +15,16 @@ function CardParcelas({ parcelas, id }) {
   }
 
   return (
-    <div className="border grid grid-cols-1 gap-2 justify-between">
+    <div className="border grid grid-cols-1 gap-2 justify-between dark:border-[#FFFF]">
       <div className="relative overflow-hidden">
         {/* Pass to the map the coordinates x and y */}
         <MapContainer Coord_X={parcela.Coord_X} Coord_Y={parcela.Coord_Y} />
       </div>
       <div className="p-6">
-        <h5 className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">
+        <h5 className="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50 dark:text-white">
           Datos de la Parcela {parcela.id}
         </h5>
-        <p className="mb-3 text-sm font-normal leading-snug text-neutral-600 dark:text-neutral-300">
+        <p className="mb-3 text-sm font-normal leading-snug text-neutral-600 dark:text-neutral-300 dark:text-white">
           <ul>
             <li>Nº SigPac: {parcela.nsigpac}</li>
             <li>Codigo Provincia: {parcela.cprovincia}</li>
