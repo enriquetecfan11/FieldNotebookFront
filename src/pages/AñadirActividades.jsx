@@ -161,8 +161,8 @@ const AddActividades = () => {
               className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2 dark:bg-[#1A222C] dark:text-white">
               <option value=''>Seleccione la parcela</option>
               {parcela.map((parcela) => (
-                <option key={parcela.id} value={parcela.id}>
-                  ID Parcela {parcela.id} -- Nº SigPac {parcela.nsigpac}
+                <option key={parcela.id} value={parcela.nombre}>
+                  Nombre parcela: {parcela.nombre}
                 </option>
               ))}
             </select>
@@ -188,6 +188,7 @@ const AddActividades = () => {
               required
             >
               <option value=''>Seleccione el fitosanitario</option>
+              <option value='ninguno'>Ningun Fitosanitario Usado</option>
               {fitosanitarioslist.map(fitosanitario => (
                 <option key={fitosanitario.id} value={fitosanitario.nombre}>
                   {fitosanitario.sustanciaactiva}
