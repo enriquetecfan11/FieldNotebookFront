@@ -62,7 +62,7 @@ const Header = (props: {
             <DarkModeSwitcher />
             {/* <!-- Dark Mode Toggler --> */}
           </ul>
-          <DropdownUser />
+          {/* <DropdownUser /> */}
 
           {/* <!-- User Area --> */}
           {/* <!-- User Area --> */}
