@@ -93,7 +93,8 @@ const AddActividades = () => {
       producto: formData.get('producto'),
       fitosanitario: formData.get('fitosanitario'),
       maquinaria: formData.get('maquinaria'),
-      personal: formData.get('personal')
+      personal: formData.get('personal'),
+      hecho: false,
     }
 
     console.log(actividadesData);
