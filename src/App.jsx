@@ -18,6 +18,8 @@ import AñadirPersonal from './pages/Sistema/Formularios/AñadirPersonal';
 import AñadirMaquinaria from './pages/Sistema/Formularios/AñadirMaquinaria';
 import AñadirProductos from './pages/Sistema/Formularios/AñadirProductos';
 import AñadirFitosanitarios from './pages/Sistema/Formularios/AñadirFitosanitarios';
+import AñadirParcela from './pages/Sistema/Formularios/AñadirParcelas'
+
 
 function App() {
   const [loading, setLoading] = useState(true);
@@ -61,6 +63,7 @@ function App() {
             <Route path="/anadirproductos" element={<AñadirProductos />} />
             <Route path="/anadirfitosanitarios" element={<AñadirFitosanitarios />} />
             <Route path="/parcelas" element={<Parcelas />} />
+            <Route path='/anadirparcela' element={<AñadirParcela />} />
           </>
         ) : (
           <Route

@@ -11,4 +11,5 @@ export default {
   getUsuarios: () => `${API_BASE_URL}/usuarios`,
   getParcelas: () => `${API_BASE_URL}/parcelas`,
   getParcelaID: () => `${API_BASE_URL}/parcelas/:id`,
+  parcelasSigPac: () => `${API_BASE_URL}/parcelasigpac`,
 };
