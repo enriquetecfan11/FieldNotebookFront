@@ -38,8 +38,8 @@ const CalendarioActividades = () => {
 
   const { data, isLoading, errorMessage } = useOpenWeather({
     key: '959d55cbfd41bca8951a491bde080a8c',
-    lat: '40.4165000',
-    lon: '-3.7025600',
+    lat: '36.7292',
+    lon: '-4.4293',
     lang: 'es',
     unit: 'metric',
     showForecast: true,
@@ -143,7 +143,7 @@ const CalendarioActividades = () => {
           errorMessage={errorMessage}
           data={data}
           lang="es"
-          locationLabel="Madrid"
+          locationLabel="Malaga"
           unitsLabels={{ temperature: 'C', windSpeed: 'Km/h' }}
           theme={customStyles}
         />
