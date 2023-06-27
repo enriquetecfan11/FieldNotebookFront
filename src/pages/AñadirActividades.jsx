@@ -2,6 +2,7 @@ import DefaultLayout from "../layout/DefaultLayout";
 import { useEffect, useState } from 'react';
 import Breadcrumb from '../components/Breadcrumb2';
 import util from "../utils/util";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -10,6 +11,11 @@ const AddActividades = () => {
   const [maquinaria, setMaquinaria] = useState([]);
   const [personal, setPersonal] = useState([]);
   const [productos, setProductos] = useState([]);
+  const [parcela, setParcelas] = useState([]);
+  const [fitosanitarioslist, setfitosanitarioslist] = useState([]);
+
+  const navigate = useNavigate();
+
 
   // Get Maquinaria
   useEffect(() => {
@@ -47,6 +53,30 @@ const AddActividades = () => {
       });
   }, []);
 
+  // Get Parcelas
+  useEffect(() => {
+    fetch(util.getParcelas())
+      .then(response => response.json())
+      .then(data => {
+        setParcelas(data);
+      })
+      .catch(error => {
+        console.error('Error al obtener los datos de las actividades:', error);
+      });
+  })
+
+  // Realizar la solicitud GET para cargar la lista de fitosnanitarios
+  useEffect(() => {
+    fetch(util.getFitosanitarios())
+      .then(response => response.json())
+      .then(data => {
+        setfitosanitarioslist(data);
+      })
+      .catch(error => {
+        console.error('Error al obtener los datos de los productos:', error);
+      });
+  }, []);
+
 
   const handelFormSubmit = (event) => {
     event.preventDefault();
@@ -58,32 +88,34 @@ const AddActividades = () => {
       actividad: formData.get('actividad'),
       fecha: formData.get('fecha'),
       tiempo: formData.get('tiempo'),
+      cantidadTiempo: formData.get('cantidadtiempo'),
       nparcela: formData.get('nparcela'),
       producto: formData.get('producto'),
+      fitosanitario: formData.get('fitosanitario'),
       maquinaria: formData.get('maquinaria'),
-      personal: formData.get('personal'),
-      hecho: false, // Agregar el campo "hecho" y establecerlo en "false"
-    };
+      personal: formData.get('personal')
+    }
 
     console.log(actividadesData);
 
-    fetch('http://localhost:5000/actividades', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(actividadesData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log('Success:', data);
-      })
-      .catch((error) => {
-        console.error('Error:', error);
-      });
-      
-    window.location.href = 'http://localhost:5173/actividades'; // Redireccionar a la página de actividades
-    form.reset();
+    // fetch('http://localhost:5000/actividades', {
+    //   method: 'POST',
+    //   headers: {
+    //     'Content-Type': 'application/json',
+    //   },
+    //   body: JSON.stringify(actividadesData),
+    // })
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     console.log('Success:', data);
+    //   })
+    //   .catch((error) => {
+    //     console.error('Error:', error);
+    //   });
+
+    // window.location.reload();
+    event.target.reset();
+    navigate('/actividades')
   }
 
 
@@ -97,17 +129,41 @@ const AddActividades = () => {
 
             <input type="date" name="fecha" id="fecha" placeholder="Fecha de la actividad" required className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2" />
 
-            <input type="text" name="tiempo" id="tiempo" placeholder="Tiempo empleado en la actividad" required className="w-full px-4 py-2.5 rounded-lg border border-gray-300 
+            <div className="flex flex-row">
+              <input type="number" name="tiempo" id="tiempo" placeholder="Tiempo empleado" required className="w-full px-4 py-2.5 rounded-lg border border-gray-300 
             dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2" />
+              {/* select // dia semana mes año */}
+              <select
+                name="cantidadtiempo"
+                id="cantidadtiempo"
+                className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2">
+                <option value="hora">Hora / Horas</option>
+                <option value="dia">Día / Dias</option>
+                <option value="semana">Semana / Semanas</option>
+                <option value="mes">Mes / Meses</option>
+                <option value="año">Año</option>
+              </select>
+            </div>
 
-            <input type="number" name="nparcela" id="nparcela" placeholder="Nº de parcela" required className="w-full px-4 py-2.5 rounded-lg border border-gray-300 
-            dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2" />
+            <label htmlFor="Parcelas">Seleccione la parcela que va ha usar</label>
+            <select
+              name="nparcela"
+              id="nparcela"
+              className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2">
+              <option value=''>Seleccione la parcela</option>
+              {parcela.map((parcela) => (
+                <option key={parcela.id} value={parcela.nparcela}>
+                  ID Parcela {parcela.id} -- Nº SigPac {parcela.nsigpac}
+                </option>
+              ))}
+            </select>
 
             <label htmlFor="producto">Seleccione el producto usado</label>
             <select
               name="producto"
               id="producto"
               className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2">
+              <option value=''>Seleccione el producto</option>
               {productos.map((producto) => (
                 <option key={producto.id} value={producto.nombre}>
                   {producto.nombre} -- {producto.tipo}
@@ -115,14 +171,27 @@ const AddActividades = () => {
               ))}
             </select>
 
-
-
+            <label htmlFor="fistosanitariolist">Seleccione el fitosaniario usado en la actividad</label>
+            <select
+              name='fitosanitario'
+              id='fitosanitario'
+              className='w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300'
+              required
+            >
+              <option value=''>Seleccione el fitosanitario</option>
+              {fitosanitarioslist.map(fitosanitario => (
+                <option key={fitosanitario.id} value={fitosanitario.nombre}>
+                  {fitosanitario.sustanciaactiva}
+                </option>
+              ))}
+            </select>
             <label htmlFor="maquinaria">Seleccione la maquinaria usada</label>
             <select
               name="maquinaria"
               id="maquinaria"
               className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2"
             >
+              <option value=''>Seleccione la maquinaria</option>
               {maquinaria.map((maquinaria) => (
                 <option key={maquinaria.id} value={maquinaria.marca}>
                   {maquinaria.marca} -- {maquinaria.tipo}
@@ -130,12 +199,13 @@ const AddActividades = () => {
               ))}
             </select>
 
-            <label htmlFor="personal">Seleccione el personal empelado en la actividad</label>
+            <label htmlFor="personal">Seleccione el personal empleado en la actividad</label>
             <select
               name="personal"
               id="personal"
               className="w-full px-4 py-2.5 rounded-lg border border-gray-300 dark:border-gray-700 focus:ring-4 focus:outline-none focus:ring-blue-300 my-2"
             >
+              <option value=''>Seleccione el personal</option>
               {personal.map((personal) => (
                 <option key={personal.id} value={personal.nombre}>
                   {personal.nombre} - Nº Incripcion {personal.ninscripcion}
